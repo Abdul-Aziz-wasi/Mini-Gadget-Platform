@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { getGadgets } from '@/lib/api'
+import Link from 'next/link'
 
 export default function GadgetsList() {
   const [gadgets, setGadgets] = useState([])
@@ -49,13 +50,13 @@ export default function GadgetsList() {
           placeholder="Search by title or category"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="input input-primary w-full md:w-1/3"
+          className="input bg-white text-black input-primary w-full md:w-1/3"
         />
 
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="select select-primary w-full md:w-1/3"
+          className="select select-primary w-full md:w-1/3 bg-white text-black"
         >
           <option value="">Sort By</option>
           <option value="price-asc">Price: Low to High</option>
@@ -66,7 +67,10 @@ export default function GadgetsList() {
     
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-6'>
         {sortedGadgets.map((gadget) => (
-          <div key={gadget.id} className="card bg-base-100 w-96 shadow-sm">
+
+          <div 
+          key={gadget.id}
+          className="card bg-base-100 w-96 shadow-sm">
             <figure className="px-10 pt-10">
               <img src={gadget.thumbnail} className="w-full bg-white rounded" />
             </figure>
@@ -77,7 +81,9 @@ export default function GadgetsList() {
               <p className='text-xl'>Category: {gadget.category}</p>
 
               <div className="card-actions">
-                <button className="btn bg-[#FF9900] text-black border-[#e17d00]">Details</button>
+               <Link href={`/gadget/${gadget.id}`}> 
+               <button className="btn bg-[#FF9900] text-black border-[#e17d00]">Details</button>
+               </Link>
               </div>
             </div>
           </div>
