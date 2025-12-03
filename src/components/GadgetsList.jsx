@@ -8,15 +8,25 @@ export default function GadgetsList() {
   const [gadgets, setGadgets] = useState([])
   const [search, setSearch] = useState('')
   const [sort, setSort] = useState('') 
+  const [loading, setLoading] = useState(true)
 
 
   useEffect(() => {
     async function fetchData() {
       const data = await getGadgets()
       setGadgets(data)
+      setLoading(false)
     }
     fetchData()
   }, [])
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+         <span className="loading loading-spinner text-accent"></span>
+      </div>
+    )
+  }
 
     const filteredGadgets = gadgets.filter(gadget =>
     gadget.title.toLowerCase().includes(search.toLowerCase()) ||

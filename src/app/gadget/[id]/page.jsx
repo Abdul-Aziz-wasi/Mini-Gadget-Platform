@@ -74,9 +74,6 @@ export default async function GadgetDetails({ params }) {
           </div>
           
           <p className="text-green-600 font-semibold">{gadget.availabilityStatus}</p>
-          <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-2 rounded-md">
-            Add to Cart
-          </button>
           
           <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 rounded-md">
             Buy Now
