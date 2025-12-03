@@ -54,19 +54,19 @@ export default function GadgetsList() {
       <h1 className='text-2xl font-bold text-center p-6'>All Gadgets</h1>
 
      
-      <div className="flex flex-col md:flex-row justify-center items-center gap-4 p-4">
+      <div className="flex flex-col md:flex-row gap-4 px-4 w-full">
         <input
           type="text"
           placeholder="Search by title or category"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="input bg-white text-black input-primary w-full md:w-1/3"
+          className="input bg-white text-black input-primary w-full md:max-w-sm"
         />
 
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="select select-primary w-full md:w-1/3 bg-white text-black"
+          className="select select-primary w-full md:max-w-sm bg-white text-black"
         >
           <option value="">Sort By</option>
           <option value="price-asc">Price: Low to High</option>
@@ -80,7 +80,7 @@ export default function GadgetsList() {
 
           <div 
           key={gadget.id}
-          className="card bg-base-100 w-96 shadow-sm">
+          className="card bg-base-100 shadow-sm w-full max-w-sm mx-auto">
             <figure className="px-10 pt-10">
               <img src={gadget.thumbnail} className="w-full bg-white rounded" />
             </figure>
